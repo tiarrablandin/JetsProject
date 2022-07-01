@@ -1,0 +1,3 @@
+#Model,Speed,Range,Price
+Passenger,Cesna 172,20,100,120000
+UFO,blurry,1000,1

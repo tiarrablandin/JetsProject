@@ -16,6 +16,10 @@ public abstract class Jet {
 		
 	}
 	
+	public String fly() {
+		return "Is flying " + model + " and will fly for " + (range / maxMph) + " hours";
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -24,10 +28,6 @@ public abstract class Jet {
 		return builder.toString();
 	}
 
-	public String fly() {
-		return "Is flying " + model + " and will fly for " + (range / maxMph) + " hours";
-	}
-	
 }
 
 	

@@ -8,7 +8,8 @@ import java.util.List;
 
 
 public class AirField {
-	private List<Jet> fleet = new ArrayList<>();
+	public List<Jet> fleet = new ArrayList<>();
+	// I had to make this public, in private it would not let me use set. Ask why.
 
 
 	public AirField() {}
@@ -87,7 +88,7 @@ public class AirField {
 	
 	@Override
 	public String toString() {
-		return "AirField [fleet=" + fleet + "]";
+		return "AirField fleet: " + fleet;
 	}
 	
 }

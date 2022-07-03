@@ -2,8 +2,10 @@ package com.skilldistillery.jets.app;
 
 import java.util.Scanner;
 import com.skilldistillery.jets.entities.AirField;
-import com.skilldistillery.jets.entities.Fighter;
+import com.skilldistillery.jets.entities.Attack;
+import com.skilldistillery.jets.entities.Board;
 import com.skilldistillery.jets.entities.Jet;
+import com.skilldistillery.jets.entities.JetImpl;
 import com.skilldistillery.jets.entities.Passenger;
 
 public class JetsApp {
@@ -15,9 +17,9 @@ public class JetsApp {
 		app.run();
 	}
 
-	public void run() {
+	private void run() {
 		airField.assembleFleet("jets.txt");
-
+		
 		System.out.println("Please make a selection: \n");
 
 		while (true) {
@@ -55,26 +57,21 @@ public class JetsApp {
 			if (selection == 5) {
 				for (Jet jet : airField.getFleet()) {
 					if (jet instanceof Passenger) {
-						((Passenger) jet).board();
+						((Board) jet).board();
 					}
 				}
 			}
 			if (selection == 6) {
 				for (Jet jet : airField.getFleet()) {
-					if (jet instanceof Fighter) {
-						((Fighter) jet).attack();
+					if (jet instanceof Attack) {
+						((Attack) jet).attack();
 					}
 				}
 			}
 			if (selection == 7) {
-//				String type;
-//				String model;
-//				int maxMph;
-//				int range;
-//				int price;
-				
 				while (true) {
 					System.out.println("Please enter the type of jet: ");
+					sc.nextLine();
 					String type = sc.nextLine();
 					System.out.println("Please enter the model: ");
 					String model = sc.nextLine();
@@ -84,11 +81,19 @@ public class JetsApp {
 					int range = sc.nextInt();
 					System.out.println("Please enter the price: ");
 					int price = sc.nextInt();
+					
+					JetImpl newJet = new JetImpl(type, model, maxMph, range, price);
+					airField.fleet.add(newJet);
+					break;
 
 				}
 			}
 //			if (selection == 8) {
-//				System.out.println( + "\n");
+//				while (true) {
+//					System.out.println("Which jet would you like to remove: ");
+//					
+//					int = sc.nextLine();
+//				}
 //			}
 			if (selection == 9) {
 				System.out.println("Goodbye.");

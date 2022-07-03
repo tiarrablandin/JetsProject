@@ -8,13 +8,16 @@ import java.util.List;
 
 
 public class AirField {
-	public List<Jet> fleet = new ArrayList<>();
-	// I had to make this public, in private it would not let me use set. Ask why.
-
+	private List<Jet> fleet = new ArrayList<>();
+	public Object setFleet = fleet;
 
 	public AirField() {}
 	
 	public void assembleFleet(String fileName) {
+		asmblFleet(fileName);
+	}
+	
+	private void asmblFleet(String fileName) {
 		try ( BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
 			  String line;
 			  String className;
@@ -54,28 +57,37 @@ public class AirField {
 			}
 	}
 	
-	public Jet fastestJet() {
-		Jet fastestJet = fleet.get(0);
-		for(int i = 1; i < fleet.size(); i++) {
-			if (fleet.get(i) != null) {
-				if(fleet.get(i).maxMph > fastestJet.maxMph) {
-					fastestJet = fleet.get(i);
-				}
-			}
-		}
-		return fastestJet;
+	public void fastestJet() {
+		System.out.println(fastJet());
 	}
 	
-	public Jet farthestJet() {
-		Jet farthestJet = fleet.get(0);
+	private Jet fastJet() {
+		Jet fastJet = fleet.get(0);
 		for(int i = 1; i < fleet.size(); i++) {
 			if (fleet.get(i) != null) {
-				if(fleet.get(i).range > farthestJet.range) {
-					farthestJet = fleet.get(i);
+				if(fleet.get(i).maxMph > fastJet.maxMph) {
+					fastJet = fleet.get(i);
 				}
 			}
 		}
-		return farthestJet;
+		return fastJet;
+	}
+	
+	
+	public void farthestJet() {
+		System.out.println(farJet());
+	}
+	
+	private Jet farJet() {
+		Jet farJet = fleet.get(0);
+		for(int i = 1; i < fleet.size(); i++) {
+			if (fleet.get(i) != null) {
+				if(fleet.get(i).range > farJet.range) {
+					farJet = fleet.get(i);
+				}
+			}
+		}
+		return farJet;
 	}
 	
 	public List<Jet> getFleet() {

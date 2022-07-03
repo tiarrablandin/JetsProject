@@ -7,7 +7,9 @@ public abstract class Jet {
 	protected int range;
 	protected int price;
 	
-	public Jet(String type, String model, int maxMph, int range, int price) {
+	
+	
+	protected Jet(String type, String model, int maxMph, int range, int price) {
 		this.type = type;
 		this.model = model;
 		this.maxMph = maxMph;
@@ -16,7 +18,12 @@ public abstract class Jet {
 		
 	}
 	
-	public String fly() {
+	
+	public void fly() {
+		System.out.println(flying());
+	}
+	
+	private String flying() {
 		return "Is flying " + model + " and will fly for " + (range / maxMph) + " hours";
 	}
 	

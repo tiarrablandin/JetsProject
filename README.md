@@ -14,6 +14,8 @@
 
 ## Questions
 
-<br> I wasn't able to make my fleet private because when I went to add, it wouldn't let me add using the setter (or the getter, I tried just about everything). Can I get some clarification on what I could've done differently to make this work?
+<br> I wasn't able to make my fleet private because when I went to add, it wouldn't let me add using the setter (or the getter, I tried just about everything). Can I get some clarification on what I could've done differently to make this work? Never mind, I figured it out but I feel like there's a better way. I'd like to discuss.
+
+<br> Also, I feel like I went super overboard here with my private and public stuff. Please inform.
 
 <br> I was also forced to declare my attack and board methods as either static or default. I was under the impression that we never used default, and we only used static for our main. Can I get some clarification on what I'm doing wrong here?

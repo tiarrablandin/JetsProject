@@ -1,5 +1,6 @@
 package com.skilldistillery.jets.app;
 
+import java.util.List;
 import java.util.Scanner;
 import com.skilldistillery.jets.entities.AirField;
 import com.skilldistillery.jets.entities.Attack;
@@ -17,9 +18,10 @@ public class JetsApp {
 		app.run();
 	}
 
+	@SuppressWarnings("unchecked")
 	private void run() {
 		airField.assembleFleet("jets.txt");
-		
+
 		System.out.println("Please make a selection: \n");
 
 		while (true) {
@@ -43,16 +45,14 @@ public class JetsApp {
 			}
 			if (selection == 2) {
 				for (Jet jet : airField.getFleet()) {
-					System.out.println(jet.fly());
+					jet.fly();
 				}
 			}
 			if (selection == 3) {
-				String fastest;
-				System.out.println(airField.fastestJet() + "\n");
+				airField.fastestJet();
 			}
 			if (selection == 4) {
-				String farthest;
-				System.out.println(airField.farthestJet() + "\n");
+				airField.farthestJet();
 			}
 			if (selection == 5) {
 				for (Jet jet : airField.getFleet()) {
@@ -69,32 +69,32 @@ public class JetsApp {
 				}
 			}
 			if (selection == 7) {
-				while (true) {
-					System.out.println("Please enter the type of jet: ");
-					sc.nextLine();
-					String type = sc.nextLine();
-					System.out.println("Please enter the model: ");
-					String model = sc.nextLine();
-					System.out.println("Please enter the max speed: ");
-					int maxMph = sc.nextInt();
-					System.out.println("Please enter the range: ");
-					int range = sc.nextInt();
-					System.out.println("Please enter the price: ");
-					int price = sc.nextInt();
-					
-					JetImpl newJet = new JetImpl(type, model, maxMph, range, price);
-					airField.fleet.add(newJet);
-					break;
+				System.out.println("Please enter the type of jet: ");
+				sc.nextLine();
+				String type = sc.nextLine();
+				System.out.println("Please enter the model: ");
+				String model = sc.nextLine();
+				System.out.println("Please enter the max speed: ");
+				int maxMph = sc.nextInt();
+				System.out.println("Please enter the range: ");
+				int range = sc.nextInt();
+				System.out.println("Please enter the price: ");
+				int price = sc.nextInt();
 
-				}
+				JetImpl newJet = new JetImpl(type, model, maxMph, range, price);
+				((List<Jet>) airField.setFleet).add(newJet);
 			}
-//			if (selection == 8) {
-//				while (true) {
-//					System.out.println("Which jet would you like to remove: ");
-//					
-//					int = sc.nextLine();
-//				}
-//			}
+			if (selection == 8) {
+				System.out.println("Which jet would you like to remove: \n");
+				int i = 1;
+				for (Jet jet : airField.getFleet()) {
+					System.out.println(i + ": " + jet.toString());
+					i++;
+				}
+				int remove = sc.nextInt();
+
+				((List<Jet>) airField.setFleet).remove(remove -1); // what does this -1 do exactly???
+			}
 			if (selection == 9) {
 				System.out.println("Goodbye.");
 				break;
